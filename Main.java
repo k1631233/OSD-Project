@@ -2,6 +2,20 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+/*
+ * TO CHANGE FOR CLASS DIAGRAM:
+ * changed type of current date from Date to string (Bond.java)
+ * added isValid methods (Investor.java, Main.java)
+ * getPurchasedBonds returns String now (Investor.java)
+ * change all ArrayLists to Map 
+ * TO DO:
+ * add try/catch for ints(?) (Main.java)
+ * add calc methods for Investor.java (Investor.java)
+ * add everything else for Bond.java (Bond.java)
+ * implement getInflation (Main.java)
+ * need to have string accept spaces when creating bond (Main.java, line 26)
+ */
 class Main {
 
   static Map < String, Bond > listOfBonds = new HashMap < String, Bond > ();
@@ -69,7 +83,6 @@ class Main {
   }
 
   public static void addBond(String name, double price, double coupon) {
-        //add purchase date
     System.out.println("Confirm that you want to create a new bond ");
     System.out.println("Name: " + name + "\nPrice: " + price + "\nCoupon: " + coupon);
     System.out.println("Are you sure? [Y/n]");
@@ -87,10 +100,10 @@ class Main {
   public static Map <String, Bond> getBonds() {
     return listOfBonds;
   }
-    //
-    // public double getInflation(){
-    //
-    // }
+
+  // public double getInflation(){
+  //
+  // }
 
   public static void help() {
     System.out.println("+-----------------------------HELP-----------------------------+");

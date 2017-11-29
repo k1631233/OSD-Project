@@ -12,10 +12,6 @@ class Investor {
     purchased.put(bond, (Main.getBonds().get(bond)));
   }
 
-  public void browseBonds(ArrayList<Bond>bondList){
-
-  }
-
   public String getPurchasedBonds(){
     String ret = "d";
     for (Map.Entry<String, Bond> entry : purchased.entrySet()) {
@@ -28,6 +24,7 @@ class Investor {
   public boolean isValid(String bond){ //check if key exists in purchased
     return (purchased.get(bond) != null); //returns true if it does
   }
+
   // public double calcPayouts(Bond bond){
   //
   // }
