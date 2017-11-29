@@ -13,7 +13,7 @@ class Investor {
   }
 
   public String getPurchasedBonds(){
-    String ret = "d";
+    String ret = "";
     for (Map.Entry<String, Bond> entry : purchased.entrySet()) {
       String key = entry.getKey();
       Object value = entry.getValue();
