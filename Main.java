@@ -32,7 +32,7 @@ class Main {
       Scanner scan = new Scanner(System.in);
       String input = scan.nextLine();
       //SYSTEM COMMANDS
-      if (input.matches("[>][a-zA-Z]+[\\/]\\d+(.\\d\\d)[\\/]\\d+(.\\d\\d)[\\/]\\d")) { //does not accept spaces in string atm
+      if (input.matches("[>][a-zA-Z]+[\\/]\\d+(.\\d\\d)[\\/]\\d+(.\\d\\d)[\\/]\\d+")) { //does not accept spaces in string atm
         String[] parts = input.substring(1, input.length()).split("/");
         addBond(parts[0], Double.parseDouble(parts[1]), Double.parseDouble(parts[2]), 1, Integer.parseInt(parts[3]));
       } else if (input.equals(">help")) {
@@ -69,15 +69,15 @@ class Main {
         if(!isValid(parts[1])){ //test for valid key
           System.out.println("Bond not found");
         } else {
-        	System.out.println(user.getBondValue(parts[1], inflation, Double.parseDouble(parts[2])));
+        	System.out.println(user.getBondValue(parts[1], Double.parseDouble(parts[2])));
         }
       
-      } else if (input.matches("[>](macaulay)[\\/][a-zA-Z]+")){
+      } else if (input.matches("[>](macaulay)[\\/][a-zA-Z]+[\\/]\\d+(.\\d\\d)")){
         String[] parts = input.substring(1, input.length()).split("/");
         if(!isValid(parts[1])){ //test for valid key
           System.out.println("Bond not found");
         } else {
-        	System.out.println(user.calcMacaulay(parts[1], inflation));
+        	System.out.println(user.calcMacaulay(parts[1], Double.parseDouble(parts[2])));
         }
         
       }
@@ -86,7 +86,7 @@ class Main {
           if(!isValid(parts[1])){ //test for valid key
             System.out.println("Bond not found");
           } else {
-            System.out.println(user.calcInternalRateOfReturn(parts[1], inflation));
+            System.out.println(user.calcInternalRateOfReturn(parts[1]));
           }
           
         }
