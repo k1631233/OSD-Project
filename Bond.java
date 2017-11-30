@@ -2,8 +2,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 class Bond{
 
@@ -21,11 +19,6 @@ class Bond{
     this.purchasedDate = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
   }
 
-  public double getBondValue(Bond bond, double inflationRate){
-    int years = 2;
-    return ((bond.getValue)/(Math.pow((1+inflationRate, years)));
-  }
-  
   public int getFrequency(){ return frequency; }
 
   public double getCoupon(){ return coupon; }

@@ -12,7 +12,7 @@ class Investor {
   public void purchaseBonds(String bond){
     purchased.put(bond, (Main.getBonds().get(bond)));
   }
-
+  
   public String getPurchasedBonds(){
     String ret = "";
     for (Map.Entry<String, Bond> entry : purchased.entrySet()) {
@@ -26,20 +26,56 @@ class Investor {
     return (purchased.get(bond) != null); //returns true if it does
   }
 
-  public double calcPayouts(Bond bond){
-
+  public double calcPayouts(String bond){
+	return purchased.get(bond).getPrice()*(1+(purchased.get(bond).getCoupon()/100*purchased.get(bond).getTerm()));
   }
 
-  public int calcMacaulay(Bond bond){
-
+  public double calcMacaulay(String bond, double inflationRate){
+	double macaulay = 0; 
+	for(int i = 0; i < purchased.get(bond).getTerm() -1 ; i++) {
+		macaulay += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100) * (purchased.get(bond).getCoupon()/(1+inflationRate))) + (100*i/Math.pow((1+inflationRate), i));
+	}
+	macaulay += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100 + purchased.get(bond).getPrice()) * (purchased.get(bond).getCoupon()/(1+inflationRate))) + (100*purchased.get(bond).getTerm()/Math.pow((1+inflationRate), purchased.get(bond).getTerm()));
+	
+	return macaulay/getBondValue(bond, inflationRate, purchased.get(bond).getTerm());
   }
 
-  public double calcInternalRateOfReturn(Bond bond){
-
+  public double calcInternalRateOfReturn(String bond, double inflationRate){
+	  double irr = 0;
+	  for(int i = 0; i < purchased.get(bond).getTerm() -1 ; i++) {	
+		  irr += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100) * (purchased.get(bond).getCoupon()/(1+inflationRate))) + (100/Math.pow((1+inflationRate), i));
+	  }
+	  irr += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100 + purchased.get(bond).getPrice()) * (purchased.get(bond).getCoupon()/(1+inflationRate))) + (100/Math.pow((1+inflationRate), purchased.get(bond).getTerm()));
+	  return irr;
   }
 
-  public double getBondValue(Bond bond, double inflationRate){
-    int years = 2;
-    return ((bond.getValue)/(Math.pow((1+inflationRate, years)));
+  public double getBondValue(String bond, double inflationRate, double years){
+    return purchased.get(bond).getPrice()/Math.pow(1+inflationRate, years);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
