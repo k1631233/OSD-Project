@@ -141,9 +141,9 @@ class Main {
     System.out.println("|To browse current available bonds, type '>browse'             |");
     System.out.println("|If you wish to buy a bond, type '>purchase/[Bond name]'       |");
     System.out.println("|If you wish to view purchased bonds, type '>purchased'        |");
-    System.out.println("|type '>payouts'                                               |");
-    System.out.println("|type '>macaulay'                                              |");
-    System.out.println("|type '>IRR'                                                   |");
+    System.out.println("|type '>payouts/[Bond name]'                                   |");
+    System.out.println("|type '>macaulay/[Bond name]'                                  |");
+    System.out.println("|type '>irr/[Bond name]'                                       |");
     System.out.println("+--------------------------------------------------------------+");
   }
 }

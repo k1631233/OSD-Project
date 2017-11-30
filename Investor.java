@@ -33,9 +33,9 @@ class Investor {
   public double calcMacaulay(String bond, double inflationRate){
 	double macaulay = 0; 
 	for(int i = 0; i < purchased.get(bond).getTerm() -1 ; i++) {
-		macaulay += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100) * (purchased.get(bond).getCoupon()/(1+inflationRate))) + (100*i/Math.pow((1+inflationRate), i));
+		macaulay += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100) * ((purchased.get(bond).getCoupon()/100)/(1+inflationRate))) + (100*i/Math.pow((1+inflationRate), i));
 	}
-	macaulay += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100 + purchased.get(bond).getPrice()) * (purchased.get(bond).getCoupon()/(1+inflationRate))) + (100*purchased.get(bond).getTerm()/Math.pow((1+inflationRate), purchased.get(bond).getTerm()));
+	macaulay += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100 + purchased.get(bond).getPrice()) * ((purchased.get(bond).getCoupon()/100)/(1+inflationRate))) + (100*purchased.get(bond).getTerm()/Math.pow((1+inflationRate), purchased.get(bond).getTerm()));
 	
 	return macaulay/getBondValue(bond, inflationRate, purchased.get(bond).getTerm());
   }
@@ -43,9 +43,9 @@ class Investor {
   public double calcInternalRateOfReturn(String bond, double inflationRate){
 	  double irr = 0;
 	  for(int i = 0; i < purchased.get(bond).getTerm() -1 ; i++) {	
-		  irr += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100) * (purchased.get(bond).getCoupon()/(1+inflationRate))) + (100/Math.pow((1+inflationRate), i));
+		  irr += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100) * ((purchased.get(bond).getCoupon()/100)/(1+inflationRate))) + (100/Math.pow((1+inflationRate), i));
 	  }
-	  irr += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100 + purchased.get(bond).getPrice()) * (purchased.get(bond).getCoupon()/(1+inflationRate))) + (100/Math.pow((1+inflationRate), purchased.get(bond).getTerm()));
+	  irr += ((purchased.get(bond).getPrice() * purchased.get(bond).getCoupon()/100 + purchased.get(bond).getPrice()) * ((purchased.get(bond).getCoupon()/100)/(1+inflationRate))) + (100/Math.pow((1+inflationRate), purchased.get(bond).getTerm()));
 	  return irr;
   }
 
