@@ -9,8 +9,7 @@ class Bond{
 
   int term, frequency;
   double coupon, price;
-  String name;
-  String purchasedDate;
+  String name, purchasedDate;
 
   public Bond(String name, double price, double coupon, int frequency, int term){
     this.frequency = frequency;
@@ -22,4 +21,20 @@ class Bond{
     this.purchasedDate = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
   }
 
+  public double getBondValue(Bond bond, double inflationRate){
+    int years = 2;
+    return ((bond.getValue)/(Math.pow((1+inflationRate, years)));
+  }
+  
+  public int getFrequency(){ return frequency; }
+
+  public double getCoupon(){ return coupon; }
+
+  public int getTerm(){ return term; }
+
+  public String getName(){ return name; }
+
+  public String getPurchasedDate(){ return purchasedDate; }
+
+  public double getPrice (){ return price; }
 }

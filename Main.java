@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  * changed type of current date from Date to string (Bond.java)
  * added isValid methods (Investor.java, Main.java)
  * getPurchasedBonds returns String now (Investor.java)
- * change all ArrayLists to Map 
+ * change all ArrayLists to Map
  * TO DO:
  * add try/catch for ints(?) (Main.java)
  * add calc methods for Investor.java (Investor.java)
@@ -20,7 +20,11 @@ class Main {
 
   static Map < String, Bond > listOfBonds = new HashMap < String, Bond > ();
 
+  static double inflation;
+
   public static void main(String[] args) {
+
+    inflation = 0.10;
 
     Investor user = new Investor();
 
@@ -63,6 +67,14 @@ class Main {
             System.out.println("Bond purchased");
           }
         }
+      } else if (input.matches("[>](value)[\\/][a-zA-Z]+")){
+        String[] parts = input.substring(1, input.length()).split("/");
+        if(!isValid(parts[1])){ //test for valid key
+          System.out.println("Bond not found");
+        } else {
+          //RUN CALCULATE VALUE
+          }
+        }
       } else if (input.equals(">purchased")){
         System.out.println(user.getPurchasedBonds());
       } else if (input.equals(">payouts")){
@@ -101,9 +113,9 @@ class Main {
     return listOfBonds;
   }
 
-  // public double getInflation(){
-  //
-  // }
+  public double getInflation(){
+    return inflation;
+  }
 
   public static void help() {
     System.out.println("+-----------------------------HELP-----------------------------+");

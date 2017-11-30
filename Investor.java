@@ -1,6 +1,7 @@
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.lang.Math;
 
 class Investor {
   Map<String, Bond> purchased;
@@ -25,19 +26,20 @@ class Investor {
     return (purchased.get(bond) != null); //returns true if it does
   }
 
-  // public double calcPayouts(Bond bond){
-  //
-  // }
-  //
-  // public int calcMacaulay(Bond bond){
-  //
-  // }
-  //
-  // public double calcInternalRateOfReturn(Bond bond){
-  //
-  // }
-  //
-  // public double getBondValue(Bond bond, double inflationRate){
-  //
-  // }
+  public double calcPayouts(Bond bond){
+
+  }
+
+  public int calcMacaulay(Bond bond){
+
+  }
+
+  public double calcInternalRateOfReturn(Bond bond){
+
+  }
+
+  public double getBondValue(Bond bond, double inflationRate){
+    int years = 2;
+    return ((bond.getValue)/(Math.pow((1+inflationRate, years)));
+  }
 }
